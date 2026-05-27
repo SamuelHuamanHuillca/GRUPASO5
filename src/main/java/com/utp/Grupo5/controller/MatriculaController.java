@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/matriculas")
+@CrossOrigin(origins = "*")
 @Tag(name = "Matrículas", description = "API solicitudes de matrícula")
 public class MatriculaController {
 

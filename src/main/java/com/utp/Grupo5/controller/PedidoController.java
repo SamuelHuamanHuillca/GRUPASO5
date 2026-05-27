@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/pedidos")
+@CrossOrigin(origins = "*")
 @Tag(name = "Pedidos", description = "API pedidos cafetería UTP")
 public class PedidoController {
 

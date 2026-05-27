@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/productos")
+@CrossOrigin(origins = "*")
 @Tag(name = "Productos", description = "API cafetería UTP")
 public class ProductoController {
 
