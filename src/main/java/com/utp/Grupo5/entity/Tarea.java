@@ -1,4 +1,5 @@
 
+// src/main/java/com/utp/Grupo5/entity/Tarea.java
 package com.utp.Grupo5.entity;
 
 import jakarta.persistence.*;
@@ -17,9 +18,14 @@ public class Tarea {
 
     private String descripcion;
 
-    // Ej: "PENDIENTE", "EN_PROGRESO", "COMPLETADA"
     @Column(nullable = false)
-    private String estado;
+    private String curso;       // ← nombre del curso, campo simple
+
+    @Column(nullable = false)
+    private String estado;      // "PENDIENTE", "EN_PROGRESO", "COMPLETADA"
+
+    @Column(nullable = false)
+    private String prioridad;   // "ALTA", "MEDIA", "BAJA"  ← nuevo
 
     private LocalDate fechaVencimiento;
 
@@ -33,14 +39,18 @@ public class Tarea {
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
+    public String getCurso() { return curso; }
+    public void setCurso(String curso) { this.curso = curso; }
+
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
+
+    public String getPrioridad() { return prioridad; }
+    public void setPrioridad(String prioridad) { this.prioridad = prioridad; }
 
     public LocalDate getFechaVencimiento() { return fechaVencimiento; }
     public void setFechaVencimiento(LocalDate fechaVencimiento) { this.fechaVencimiento = fechaVencimiento; }
 }
-
-
 
 
 

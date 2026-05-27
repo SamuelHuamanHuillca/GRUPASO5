@@ -13,11 +13,17 @@ public class Incidencia {
     private Long id;
 
     @Column(nullable = false)
-    private String titulo;
+    private String aula;        // ← nuevo
+
+    @Column(nullable = false)
+    private String equipo;      // ← nuevo
+
+    @Column(nullable = false)
+    private String tipo;        // ← nuevo ej: "HARDWARE", "SOFTWARE", "RED"
 
     private String descripcion;
 
-    // Ej: "ABIERTA", "EN_PROCESO", "RESUELTA"
+    // "PENDIENTE", "EN_PROCESO", "ATENDIDA"
     @Column(nullable = false)
     private String estado;
 
@@ -32,8 +38,14 @@ public class Incidencia {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getTitulo() { return titulo; }
-    public void setTitulo(String titulo) { this.titulo = titulo; }
+    public String getAula() { return aula; }
+    public void setAula(String aula) { this.aula = aula; }
+
+    public String getEquipo() { return equipo; }
+    public void setEquipo(String equipo) { this.equipo = equipo; }
+
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }

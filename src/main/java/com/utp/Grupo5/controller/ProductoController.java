@@ -13,24 +13,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/productos")
-@CrossOrigin(origins = "*")
-@Tag(name = "Productos", description = "API para gestión de productos")
+@Tag(name = "Productos", description = "API cafetería UTP")
 public class ProductoController {
 
     @Autowired
     private ProductoService productoService;
 
-    // GET /api/productos
     @GetMapping
     @Operation(summary = "Obtener todos los productos")
     public ResponseEntity<List<Producto>> listarProductos() {
         return ResponseEntity.ok(productoService.listarProductos());
     }
 
-    // POST /api/productos
-    @PostMapping
-    @Operation(summary = "Insertar un nuevo producto")
-    public ResponseEntity<Producto> guardarProducto(@RequestBody Producto producto) {
-        return ResponseEntity.ok(productoService.guardarProducto(producto));
+    @GetMapping("/{id}")
+    @Operation(summary = "Obtener producto por ID")
+    public ResponseEntity<Producto> obtenerProducto(@PathVariable Long id) {
+        return productoService.obtenerProductoPorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }

@@ -15,26 +15,23 @@ public class IncidenciaService {
     @Autowired
     private IncidenciaRepository incidenciaRepository;
 
-    // Obtener todas las incidencias
     public List<Incidencia> listarIncidencias() {
         return incidenciaRepository.findAll();
     }
 
-    // Insertar nueva incidencia
     public Incidencia guardarIncidencia(Incidencia incidencia) {
+        incidencia.setEstado("PENDIENTE"); // estado inicial siempre
         return incidenciaRepository.save(incidencia);
     }
 
-    // Actualizar incidencia existente (solo estado y descripcion)
-    public Incidencia actualizarIncidencia(Long id, Incidencia datosNuevos) {
+    // Solo actualiza el estado — PUT /api/incidencias/{id}/estado
+    public Incidencia actualizarEstado(Long id, String nuevoEstado) {
         Optional<Incidencia> optional = incidenciaRepository.findById(id);
         if (optional.isPresent()) {
             Incidencia incidencia = optional.get();
-            incidencia.setTitulo(datosNuevos.getTitulo());
-            incidencia.setDescripcion(datosNuevos.getDescripcion());
-            incidencia.setEstado(datosNuevos.getEstado());
+            incidencia.setEstado(nuevoEstado);
             return incidenciaRepository.save(incidencia);
         }
-        return null; // el controller maneja el 404
+        return null;
     }
 }

@@ -15,31 +15,29 @@ public class TareaService {
     @Autowired
     private TareaRepository tareaRepository;
 
-    // Obtener todas las tareas
     public List<Tarea> listarTareas() {
         return tareaRepository.findAll();
     }
 
-    // Registrar nueva tarea
     public Tarea guardarTarea(Tarea tarea) {
         return tareaRepository.save(tarea);
     }
 
-    // Actualizar tarea existente
     public Tarea actualizarTarea(Long id, Tarea datosNuevos) {
         Optional<Tarea> optional = tareaRepository.findById(id);
         if (optional.isPresent()) {
             Tarea tarea = optional.get();
             tarea.setTitulo(datosNuevos.getTitulo());
             tarea.setDescripcion(datosNuevos.getDescripcion());
+            tarea.setCurso(datosNuevos.getCurso());
             tarea.setEstado(datosNuevos.getEstado());
+            tarea.setPrioridad(datosNuevos.getPrioridad());
             tarea.setFechaVencimiento(datosNuevos.getFechaVencimiento());
             return tareaRepository.save(tarea);
         }
         return null;
     }
 
-    // Eliminar tarea
     public boolean eliminarTarea(Long id) {
         if (tareaRepository.existsById(id)) {
             tareaRepository.deleteById(id);
