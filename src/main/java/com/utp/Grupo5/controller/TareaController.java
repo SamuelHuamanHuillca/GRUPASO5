@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tareas")
+@CrossOrigin(origins = "*")
 @Tag(name = "Tareas", description = "API para control de tareas")
 public class TareaController {
 

@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/incidencias")
+@CrossOrigin(origins = "*")
 @Tag(name = "Incidencias", description = "API para gestión de incidencias")
 public class IncidenciaController {
 
